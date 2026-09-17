@@ -1,7 +1,9 @@
 /**
- * Paleta pensada para transmitir confiança e leitura tranquila:
- * "ink" = azul petróleo/marinho (identidade acadêmica, títulos, header, CTAs primários)
- * "accent" = verde-água suave (links, destaques, hover)
+ * Paleta pensada para transmitir confiança e leitura tranquila, com um
+ * segundo acento para dar vida sem perder a seriedade acadêmica:
+ * "ink"   = azul petróleo/marinho (identidade acadêmica, títulos, header, CTAs primários)
+ * "accent"= verde-água mais vívido (links, destaques, hover, grafo do Hero)
+ * "gold"  = dourado suave, usado com moderação (poucos nós do grafo, pequenos realces)
  * "paper" = neutros levemente azulados para fundo (menos cansativo que branco puro)
  *
  * Para trocar a identidade visual do site, edite apenas estas escalas.
@@ -27,16 +29,28 @@ export default {
           950: "#0d1a24",
         },
         accent: {
-          50: "#f1faf8",
-          100: "#dcf1ec",
-          200: "#b8e3da",
-          300: "#8ccec0",
-          400: "#5fb3a1",
-          500: "#3e9684",
-          600: "#2f7a6b",
-          700: "#276256",
-          800: "#214e46",
-          900: "#1a3f39",
+          50: "#eefbf8",
+          100: "#d3f3ec",
+          200: "#a8e6da",
+          300: "#74d3c1",
+          400: "#45b8a4",
+          500: "#269485",
+          600: "#1c766b",
+          700: "#1c5f57",
+          800: "#1c4c46",
+          900: "#1a3f3a",
+        },
+        gold: {
+          50: "#fdf8ee",
+          100: "#faedd0",
+          200: "#f3d89e",
+          300: "#ecbf66",
+          400: "#e2a53c",
+          500: "#cf8a25",
+          600: "#ab6c1c",
+          700: "#87541b",
+          800: "#6e451c",
+          900: "#5c3a1b",
         },
         paper: {
           50: "#fbfcfd",
