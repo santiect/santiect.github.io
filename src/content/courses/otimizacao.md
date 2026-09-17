@@ -4,7 +4,7 @@ summary: >
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curso sobre
   métodos de otimização, com notas de aula e listas publicadas no
   repositório da disciplina.
-url: "https://github.com/santiect/otimizacao"
+url: "https://santiect.github.io/ect2524/"
 order: 2
 ---
 
