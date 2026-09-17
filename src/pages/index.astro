@@ -78,6 +78,7 @@ const carouselSlides = posts.map((post) => ({
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {talks.map((talk) => (
         <TalkCard
+          slug={talk.slug}
           title={talk.data.title}
           kind={talk.data.kind}
           date={talk.data.date}
