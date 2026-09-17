@@ -1,0 +1,30 @@
+---
+/**
+ * Ícone recorrente de identidade visual: um pequeno grafo (3 nós + arestas),
+ * remetendo a grafos/otimização combinatória. Usado nos títulos de seção e
+ * no cabeçalho. Cor herdada via `currentColor` — controle com classes de
+ * texto (ex.: text-accent-500).
+ */
+interface Props {
+  class?: string;
+}
+const { class: className = "h-5 w-5" } = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  class={className}
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  aria-hidden="true"
+>
+  <line x1="5" y1="6" x2="19" y2="6" />
+  <line x1="5" y1="6" x2="12" y2="18" />
+  <line x1="19" y1="6" x2="12" y2="18" />
+  <circle cx="5" cy="6" r="2.1" fill="currentColor" stroke="none" />
+  <circle cx="19" cy="6" r="2.1" fill="currentColor" stroke="none" />
+  <circle cx="12" cy="18" r="2.1" fill="currentColor" stroke="none" />
+</svg>
