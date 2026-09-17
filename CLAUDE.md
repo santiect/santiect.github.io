@@ -17,6 +17,9 @@ fluxo de publicação.
   front matter validado por schema (`src/content/config.ts`). Evita erros
   de digitação silenciosos ao editar.
 - **`remark-math` + `rehype-katex`** — permitem LaTeX nos posts do blog.
+- **p5.js** — anima o fundo do Hero (rede de nós/grafo à deriva), referência
+  visual sutil à área de pesquisa (grafos, metaheurísticas). Só carrega na
+  home; ver `src/components/HeroCanvas.astro`.
 - **GitHub Actions** (`.github/workflows/deploy.yml`) — builda e publica
   automaticamente a cada push em `main`.
 
@@ -94,16 +97,26 @@ para o novo caminho.
 
 ## Paleta de cores
 
-Definida em `tailwind.config.mjs`, em três escalas:
+Definida em `tailwind.config.mjs`, em quatro escalas:
 
 - `ink` — azul petróleo/marinho (identidade acadêmica: header, títulos,
   fundo escuro do hero e footer).
-- `accent` — verde-água suave (links, destaques, hover, CTAs).
+- `accent` — verde-água (links, destaques, hover, CTAs, cor principal do
+  grafo animado do Hero).
+- `gold` — dourado suave, usado com moderação como segundo acento (ex.:
+  badges de "palestra/evento" no `TalkCard`, alguns nós do grafo do Hero)
+  para dar variedade visual sem virar poluição.
 - `paper` — neutros levemente azulados (fundo claro das seções).
 
 Para redesenhar a identidade visual, troque os valores hexadecimais
 dessas escalas — todo o site usa essas classes (`bg-ink-900`,
-`text-accent-600`, etc.), nada de cor "hardcoded" fora daqui.
+`text-accent-600`, `text-gold-600`, etc.), nada de cor "hardcoded" fora
+daqui (exceção: as cores passadas como prop hex para `<HeroCanvas>`, que
+alimentam o canvas p5.js — mantenha-as em sincronia com `accent-400` e
+`gold-400` do config).
+
+Use `gold` com parcimônia — é o tempero, não a cor principal. Regra
+prática: no máximo um elemento de destaque em `gold` por seção.
 
 Tipografia: `font-serif` (Source Serif 4, títulos) e `font-sans` (Inter,
 corpo), carregadas via Google Fonts em `src/layouts/BaseLayout.astro`.
@@ -120,6 +133,15 @@ corpo), carregadas via Google Fonts em `src/layouts/BaseLayout.astro`.
 - `src/components/BlogCarousel.astro` — carrossel autoplay dos posts
   (pausa em hover/foco, setas, dots, navegável por teclado). Lógica em
   `<script>` no próprio componente, sem dependência externa.
+- `src/components/GraphBackground.astro` — grafo decorativo estático
+  (SVG), fallback visual sem JS/`prefers-reduced-motion` por trás do
+  `HeroCanvas`.
+- `src/components/HeroCanvas.astro` — grafo animado do Hero em p5.js
+  (nós à deriva, arestas por proximidade). Respeita
+  `prefers-reduced-motion` (não monta) e pausa via
+  `visibilitychange` quando a aba fica em segundo plano.
+- `src/components/SectionHeading.astro` + `icons/GraphNodeIcon.astro` —
+  título de seção com o ícone de grafo recorrente da identidade visual.
 - `src/pages/index.astro` — monta a home a partir das collections.
 - `src/pages/blog/[slug].astro` — gera uma página por post.
 
@@ -155,4 +177,6 @@ só).
   inserido.
 - Qualquer novo componente client-side deve ter fallback razoável sem
   JS (o carrossel, por exemplo, mostra o primeiro slide estático se o
-  script não rodar).
+  script não rodar; o `HeroCanvas` deixa o `GraphBackground` estático
+  visível até o p5.js montar, e não monta se `prefers-reduced-motion`
+  estiver ativo).

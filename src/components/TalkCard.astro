@@ -21,10 +21,20 @@ const kindLabel: Record<string, string> = {
   workshop: "Workshop",
   evento: "Evento",
 };
+
+// Pequena variação de cor por tipo — dá diferenciação visual às seções de
+// divulgação sem sair da paleta (accent para curso/workshop, gold para
+// palestra/evento).
+const kindColor: Record<string, string> = {
+  curso: "text-accent-600",
+  workshop: "text-accent-600",
+  palestra: "text-gold-600",
+  evento: "text-gold-600",
+};
 ---
 
 <div class="glow-accent rounded-xl border border-ink-200 bg-white p-6 shadow-sm">
-  <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-accent-600">
+  <div class={`flex items-center gap-2 text-xs font-semibold uppercase tracking-wide ${kindColor[kind] ?? "text-accent-600"}`}>
     <span>{kindLabel[kind] ?? kind}</span>
     <span class="text-ink-300">&middot;</span>
     <time datetime={date.toISOString()}>{formattedDate}</time>
