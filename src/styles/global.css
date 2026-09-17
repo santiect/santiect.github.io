@@ -17,6 +17,43 @@
   }
 }
 
+@layer utilities {
+  /* Textura sutil de "grid de pontos" (grafo/malha), para seções alternadas. */
+  .bg-dot-grid {
+    background-image: radial-gradient(circle, rgba(32, 55, 74, 0.12) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Brilho discreto de destaque, usado no hover de cards. */
+  .glow-accent {
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .glow-accent:hover {
+    box-shadow:
+      0 0 0 1px rgba(63, 150, 132, 0.35),
+      0 12px 28px -12px rgba(63, 150, 132, 0.45);
+    transform: translateY(-2px);
+  }
+
+  @keyframes graph-node-pulse {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  .graph-node-pulse {
+    animation: graph-node-pulse 3.5s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .graph-node-pulse {
+      animation: none;
+    }
+  }
+}
+
 @layer components {
   /* Largura de leitura confortável para textos longos (posts do blog). */
   .prose-academic {

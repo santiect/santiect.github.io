@@ -8,6 +8,7 @@ import ProjectCard from "../components/ProjectCard.astro";
 import TalkCard from "../components/TalkCard.astro";
 import BlogCarousel from "../components/BlogCarousel.astro";
 import Contact from "../components/Contact.astro";
+import SectionHeading from "../components/SectionHeading.astro";
 import { site } from "../data/site";
 
 const courses = (await getCollection("courses")).sort(
@@ -40,7 +41,7 @@ const carouselSlides = posts.map((post) => ({
   <About />
 
   <section id="disciplinas" class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 scroll-mt-16">
-    <h2 class="text-2xl sm:text-3xl mb-6">Disciplinas</h2>
+    <SectionHeading>Disciplinas</SectionHeading>
     <p class="max-w-[60ch] text-ink-600 mb-8">
       Páginas completas de cada disciplina — slides, listas e material —
       estão publicadas nos respectivos repositórios do GitHub.
@@ -52,9 +53,9 @@ const carouselSlides = posts.map((post) => ({
     </div>
   </section>
 
-  <section id="projetos" class="bg-ink-50 scroll-mt-16">
+  <section id="projetos" class="bg-dot-grid bg-ink-50 scroll-mt-16">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
-      <h2 class="text-2xl sm:text-3xl mb-6">Projetos</h2>
+      <SectionHeading>Projetos</SectionHeading>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {projects.map((project) => (
           <ProjectCard
@@ -69,7 +70,7 @@ const carouselSlides = posts.map((post) => ({
   </section>
 
   <section id="cursos-palestras" class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 scroll-mt-16">
-    <h2 class="text-2xl sm:text-3xl mb-6">Cursos & Palestras</h2>
+    <SectionHeading>Cursos &amp; Palestras</SectionHeading>
     <p class="max-w-[60ch] text-ink-600 mb-8">
       Divulgação de cursos, palestras, workshops e outras atividades de
       extensão.
@@ -88,9 +89,9 @@ const carouselSlides = posts.map((post) => ({
     </div>
   </section>
 
-  <section id="blog" class="bg-ink-50 scroll-mt-16">
+  <section id="blog" class="bg-dot-grid bg-ink-50 scroll-mt-16">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
-      <h2 class="text-2xl sm:text-3xl mb-6">Blog técnico</h2>
+      <SectionHeading>Blog técnico</SectionHeading>
       <p class="max-w-[60ch] text-ink-600 mb-8">
         Textos e tutoriais técnicos, com suporte a notação matemática em
         LaTeX.

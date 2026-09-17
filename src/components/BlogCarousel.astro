@@ -27,7 +27,7 @@ const { posts } = Astro.props;
           <div class="w-full shrink-0 px-1" role="group" aria-roledescription="slide" aria-label={`${i + 1} de ${posts.length}`}>
             <a
               href={`/blog/${post.slug}/`}
-              class="group block rounded-xl border border-ink-200 bg-white p-8 shadow-sm transition hover:shadow-md hover:border-accent-400 min-h-[220px]"
+              class="glow-accent group block rounded-xl border border-ink-200 bg-white p-8 shadow-sm hover:border-accent-400 min-h-[220px]"
             >
               <time
                 datetime={post.date.toISOString()}
