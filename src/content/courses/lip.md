@@ -1,9 +1,9 @@
 ---
-title: "Linguagens de Programação (LIP)"
+title: "Linguagem de Programação (C++)"
 summary: >
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curso sobre
-  paradigmas de linguagens de programação, com material, slides e
-  exercícios publicados no repositório da disciplina.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curso de
+  linguagem de programação em C++, com material, slides e exercícios
+  publicados na página da disciplina.
 url: "https://santiect.github.io/ect3101cpp/"
 order: 1
 ---
