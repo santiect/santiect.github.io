@@ -1,0 +1,37 @@
+---
+import { site } from "../data/site";
+
+const links = [
+  { label: "E-mail", value: site.email, href: `mailto:${site.email}` },
+  { label: "GitHub", value: "github.com/santiect", href: site.github },
+  { label: "Lattes", value: "Currículo Lattes", href: site.lattes },
+  { label: "LinkedIn", value: "LinkedIn", href: site.linkedin },
+];
+---
+
+<section id="contato" class="bg-ink-50 scroll-mt-16">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
+    <h2 class="text-2xl sm:text-3xl mb-6">Contato</h2>
+    <p class="max-w-[60ch] text-ink-600 mb-8">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fique à
+      vontade para entrar em contato por qualquer um dos canais abaixo.
+    </p>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-between rounded-lg border border-ink-200 bg-white px-5 py-4 text-ink-800 shadow-sm hover:border-accent-400 hover:text-accent-700 transition"
+            >
+              <span class="font-medium">{link.label}</span>
+              <span class="text-sm text-ink-500">{link.value}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

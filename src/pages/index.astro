@@ -1,0 +1,109 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import CourseCard from "../components/CourseCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import TalkCard from "../components/TalkCard.astro";
+import BlogCarousel from "../components/BlogCarousel.astro";
+import Contact from "../components/Contact.astro";
+import { site } from "../data/site";
+
+const courses = (await getCollection("courses")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => a.data.order - b.data.order || b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const talks = (await getCollection("talks")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const posts = (await getCollection("posts", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const carouselSlides = posts.map((post) => ({
+  slug: post.slug,
+  title: post.data.title,
+  summary: post.data.summary,
+  date: post.data.date,
+  tags: post.data.tags,
+}));
+---
+
+<BaseLayout title={`${site.name} — Página acadêmica`} description={site.tagline}>
+  <Hero />
+  <About />
+
+  <section id="disciplinas" class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 scroll-mt-16">
+    <h2 class="text-2xl sm:text-3xl mb-6">Disciplinas</h2>
+    <p class="max-w-[60ch] text-ink-600 mb-8">
+      Páginas completas de cada disciplina — slides, listas e material —
+      estão publicadas nos respectivos repositórios do GitHub.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      {courses.map((course) => (
+        <CourseCard title={course.data.title} summary={course.data.summary} url={course.data.url} />
+      ))}
+    </div>
+  </section>
+
+  <section id="projetos" class="bg-ink-50 scroll-mt-16">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
+      <h2 class="text-2xl sm:text-3xl mb-6">Projetos</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {projects.map((project) => (
+          <ProjectCard
+            title={project.data.title}
+            summary={project.data.summary}
+            tags={project.data.tags}
+            url={project.data.url}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="cursos-palestras" class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 scroll-mt-16">
+    <h2 class="text-2xl sm:text-3xl mb-6">Cursos & Palestras</h2>
+    <p class="max-w-[60ch] text-ink-600 mb-8">
+      Divulgação de cursos, palestras, workshops e outras atividades de
+      extensão.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {talks.map((talk) => (
+        <TalkCard
+          title={talk.data.title}
+          kind={talk.data.kind}
+          date={talk.data.date}
+          location={talk.data.location}
+          summary={talk.data.summary}
+          url={talk.data.url}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section id="blog" class="bg-ink-50 scroll-mt-16">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
+      <h2 class="text-2xl sm:text-3xl mb-6">Blog técnico</h2>
+      <p class="max-w-[60ch] text-ink-600 mb-8">
+        Textos e tutoriais técnicos, com suporte a notação matemática em
+        LaTeX.
+      </p>
+      {
+        carouselSlides.length > 0 ? (
+          <BlogCarousel posts={carouselSlides} />
+        ) : (
+          <p class="text-ink-500">Nenhum post publicado ainda.</p>
+        )
+      }
+    </div>
+  </section>
+
+  <Contact />
+</BaseLayout>

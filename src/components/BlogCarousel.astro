@@ -1,0 +1,170 @@
+---
+interface Slide {
+  slug: string;
+  title: string;
+  summary: string;
+  date: Date;
+  tags: string[];
+}
+interface Props {
+  posts: Slide[];
+}
+const { posts } = Astro.props;
+---
+
+<div
+  id="blog-carousel"
+  class="relative"
+  data-autoplay-ms="6000"
+  role="region"
+  aria-roledescription="carrossel"
+  aria-label="Posts recentes do blog"
+>
+  <div class="overflow-hidden rounded-xl">
+    <div id="carousel-track" class="flex transition-transform duration-500 ease-out">
+      {
+        posts.map((post, i) => (
+          <div class="w-full shrink-0 px-1" role="group" aria-roledescription="slide" aria-label={`${i + 1} de ${posts.length}`}>
+            <a
+              href={`/blog/${post.slug}/`}
+              class="group block rounded-xl border border-ink-200 bg-white p-8 shadow-sm transition hover:shadow-md hover:border-accent-400 min-h-[220px]"
+            >
+              <time
+                datetime={post.date.toISOString()}
+                class="text-xs font-semibold uppercase tracking-wide text-accent-600"
+              >
+                {post.date.toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}
+              </time>
+              <h3 class="mt-2 text-xl font-semibold text-ink-900 group-hover:text-accent-700">
+                {post.title}
+              </h3>
+              <p class="mt-3 text-ink-600 leading-relaxed max-w-[65ch]">{post.summary}</p>
+              <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent-600 group-hover:text-accent-800">
+                Ler post completo
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  {
+    posts.length > 1 && (
+      <>
+        <button
+          type="button"
+          id="carousel-prev"
+          aria-label="Post anterior"
+          class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 hidden sm:flex h-10 w-10 items-center justify-center rounded-full bg-white shadow ring-1 ring-ink-200 text-ink-700 hover:text-accent-700"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          id="carousel-next"
+          aria-label="Próximo post"
+          class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 hidden sm:flex h-10 w-10 items-center justify-center rounded-full bg-white shadow ring-1 ring-ink-200 text-ink-700 hover:text-accent-700"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        <div id="carousel-dots" class="mt-5 flex justify-center gap-2">
+          {posts.map((_, i) => (
+            <button
+              type="button"
+              class="h-2.5 w-2.5 rounded-full bg-ink-200 data-[active=true]:bg-accent-600 transition-colors"
+              data-index={i}
+              aria-label={`Ir para o slide ${i + 1}`}
+            />
+          ))}
+        </div>
+      </>
+    )
+  }
+</div>
+
+<script>
+  const root = document.getElementById("blog-carousel");
+  if (root) {
+    const track = root.querySelector<HTMLElement>("#carousel-track");
+    const slides = Array.from(track?.children ?? []) as HTMLElement[];
+    const dots = Array.from(root.querySelectorAll<HTMLButtonElement>("#carousel-dots button"));
+    const prevBtn = root.querySelector<HTMLButtonElement>("#carousel-prev");
+    const nextBtn = root.querySelector<HTMLButtonElement>("#carousel-next");
+    const autoplayMs = Number(root.dataset.autoplayMs ?? "6000");
+
+    let index = 0;
+    let timer: ReturnType<typeof setInterval> | null = null;
+
+    function render() {
+      if (!track) return;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((dot, i) => {
+        dot.dataset.active = String(i === index);
+      });
+    }
+
+    function goTo(i: number) {
+      index = (i + slides.length) % slides.length;
+      render();
+    }
+
+    function next() {
+      goTo(index + 1);
+    }
+    function prev() {
+      goTo(index - 1);
+    }
+
+    function play() {
+      if (slides.length < 2) return;
+      stop();
+      timer = setInterval(next, autoplayMs);
+    }
+    function stop() {
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+
+    nextBtn?.addEventListener("click", () => {
+      next();
+      play();
+    });
+    prevBtn?.addEventListener("click", () => {
+      prev();
+      play();
+    });
+    dots.forEach((dot, i) =>
+      dot.addEventListener("click", () => {
+        goTo(i);
+        play();
+      })
+    );
+
+    root.addEventListener("mouseenter", stop);
+    root.addEventListener("mouseleave", play);
+    root.addEventListener("focusin", stop);
+    root.addEventListener("focusout", play);
+
+    root.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") {
+        next();
+        play();
+      } else if (e.key === "ArrowLeft") {
+        prev();
+        play();
+      }
+    });
+
+    render();
+    play();
+  }
+</script>

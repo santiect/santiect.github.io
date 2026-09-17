@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper-50 text-ink-900 font-sans antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif text-ink-900;
+  }
+}
+
+@layer components {
+  /* Largura de leitura confortável para textos longos (posts do blog). */
+  .prose-academic {
+    @apply max-w-[70ch] text-ink-800 leading-relaxed;
+  }
+  .prose-academic p {
+    @apply mb-5;
+  }
+  .prose-academic h2 {
+    @apply text-2xl mt-10 mb-4;
+  }
+  .prose-academic h3 {
+    @apply text-xl mt-8 mb-3;
+  }
+  .prose-academic a {
+    @apply text-accent-700 underline decoration-accent-300 underline-offset-2 hover:text-accent-800;
+  }
+  .prose-academic code {
+    @apply bg-ink-100 text-ink-800 rounded px-1.5 py-0.5 text-sm;
+  }
+}
