@@ -81,8 +81,18 @@ apagá-lo.
 ### Novo curso/palestra/workshop (divulgação)
 
 `src/content/talks/nome.md` — `title`, `kind` (`curso` | `palestra` |
-`workshop` | `evento`), `date`, `location`, `summary`, `url` (opcional).
-Listados automaticamente por data (mais recente primeiro).
+`workshop` | `evento`), `date`, `location`, `summary`, `url` (opcional,
+link externo de inscrição/site oficial), e o corpo em Markdown com o
+conteúdo completo (a "notícia" da palestra/curso). Listados
+automaticamente por data (mais recente primeiro).
+
+Cada item gera automaticamente uma página própria dentro do site em
+`/cursos-palestras/nome/` (o nome do arquivo vira o slug), com o corpo
+em Markdown renderizado — é para onde o card na home sempre aponta. O
+`url`, se preenchido, aparece como um link secundário ("Site oficial /
+inscrição") dentro dessa página e no card, mas nunca substitui a
+página interna: conteúdo de divulgação sempre fica hospedado no
+próprio site, nunca só como redirecionamento externo.
 
 ## Dados pessoais (nome, foto, e-mail, links)
 
@@ -126,6 +136,8 @@ corpo), carregadas via Google Fonts em `src/layouts/BaseLayout.astro`.
 - `src/layouts/BaseLayout.astro` — casca HTML (head, header, footer).
 - `src/layouts/PostLayout.astro` — layout de post individual (inclui CSS
   do KaTeX).
+- `src/layouts/TalkLayout.astro` — layout da página interna de cada
+  curso/palestra/evento (`/cursos-palestras/<slug>/`).
 - `src/components/Header.astro`, `Footer.astro`, `Hero.astro`,
   `About.astro`, `Contact.astro` — seções fixas da home.
 - `src/components/CourseCard.astro`, `ProjectCard.astro`,
@@ -144,6 +156,9 @@ corpo), carregadas via Google Fonts em `src/layouts/BaseLayout.astro`.
   título de seção com o ícone de grafo recorrente da identidade visual.
 - `src/pages/index.astro` — monta a home a partir das collections.
 - `src/pages/blog/[slug].astro` — gera uma página por post.
+- `src/pages/cursos-palestras/[slug].astro` — gera uma página por
+  curso/palestra/workshop/evento (conteúdo sempre hospedado no site,
+  nunca só um link externo).
 
 ## Comandos
 
