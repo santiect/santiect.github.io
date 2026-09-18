@@ -41,24 +41,23 @@ const carouselSlides = posts.map((post) => ({
 
   <section id="disciplinas" class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 scroll-mt-16">
     <SectionHeading>Disciplinas</SectionHeading>
-    <p class="max-w-[60ch] text-ink-600 mb-4">
+    <p class="max-w-[60ch] text-ink-600 mb-8">
       Acesso aos materiais utilizados em aula. Contém slides, textos, listas de exercícios e exemplos em código.
     </p>
-    <p class="max-w-[60ch] text-ink-600 mb-8">
-      Ambas as disciplinas fazem parte da
-      <a
-        href="https://santiect.github.io/ect_ca/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-accent-600 hover:text-accent-700 underline underline-offset-2"
-      >Ênfase em Computação Aplicada</a>
-      da ECT.
-    </p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-6">
       {courses.map((course) => (
         <CourseCard title={course.data.title} summary={course.data.summary} url={course.data.url} />
       ))}
     </div>
+    <a
+      href="https://santiect.github.io/ect_ca/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex items-center justify-between gap-4 rounded-lg border border-accent-200 bg-accent-50 px-5 py-4 text-accent-800 hover:bg-accent-100 transition-colors"
+    >
+      <span class="font-medium">Conheça a Ênfase em Computação Aplicada</span>
+      <span aria-hidden="true">&rarr;</span>
+    </a>
   </section>
 
   <section id="projetos" class="bg-dot-grid bg-ink-50 scroll-mt-16">
