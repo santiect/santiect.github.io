@@ -3,7 +3,7 @@
  * nome, foto, e-mail e links de contato em todas as páginas de uma vez.
  */
 export const site = {
-  name: "Prof. Dr. Éverton Santi",
+  name: "Prof. Éverton Santi",
   role: "Escola de Ciências e Tecnologia (ECT), UFRN",
   tagline:
     "Câmara de Computação",
