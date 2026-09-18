@@ -7,10 +7,9 @@ export const site = {
   role: "Escola de Ciências e Tecnologia (ECT), UFRN",
   tagline:
     "Câmara de Computação",
-  about: `Doutor em Engenharia de Computação (UFRN/2014) e Mestre em Engenharia de Produção (UFRN/2012).
-  Graduado em Ciência da Compuação pela Universidade de Cruz Alta (2010). Atua na área de Pesquisa Operacional, em 
-  especial em Otimização Combinatória e Metaheurísticas. Atualmente pesquisa algoritmos de Geração de Colunas para
-  problemas de roteamento.`,
+  about: `Doutor em Engenharia de Computação (UFRN/2014) e Mestre em Engenharia de Produção (UFRN/2012). Graduado em Ciência da Computação pela Universidade de Cruz Alta (2010).
+  Atua na área de Pesquisa Operacional, desenvolvendo trabalhos com Otimização Combinatória e Metaheurísticas.
+  Atualmente pesquisa algoritmos de Geração de Colunas para problemas de roteamento.`,
   photo: "/assets/img/foto_perfil.png",
   email: "everton.santi@ufrn.br",
   github: "https://github.com/santiect",

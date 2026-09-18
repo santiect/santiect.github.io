@@ -1,12 +1,9 @@
 ---
 title: "Linguagem de Programação (C++)"
 summary: >
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curso de
-  linguagem de programação em C++, com material, slides e exercícios
-  publicados na página da disciplina.
+  A discplina ECT3201 é a segunda matéria de programação na formação do Bracharel em Ciências em Tecnologia. Nesta versão da disciplina, a linguagem C++ é utilizada para demonstrar conceitos básicos.
 url: "https://santiect.github.io/ect3201cpp/"
 order: 1
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua.
+  A discplina ECT3201 é a segunda matéria de programação na formação do Bracharel em Ciências em Tecnologia. Nesta versão da disciplina, a linguagem C++ é utilizada para demonstrar conceitos básicos.

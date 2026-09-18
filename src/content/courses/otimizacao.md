@@ -1,12 +1,9 @@
 ---
 title: "Introdução à Otimização"
 summary: >
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curso sobre
-  métodos de otimização, com notas de aula e listas publicadas no
-  repositório da disciplina.
+  A disciplina ECT2524 faz parte da Ênfase em Computação Aplicada. Nela, os alunos têm a oportunidade de aprender a modelar e resolver problemas de otimização, por meio do uso de linguagens de modelagem, solvers e algoritmos especializados, como metaheurísticas.
 url: "https://santiect.github.io/ect2524/"
 order: 2
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim
-veniam, quis nostrud exercitation ullamco laboris.
+  A disciplina ECT2524 faz parte da Ênfase em Computação Aplicada. Nela, os alunos têm a oportunidade de aprender a modelar e resolver problemas de otimização, por meio do uso de linguagens de modelagem, solvers e algoritmos especializados, como metaheurísticas.
