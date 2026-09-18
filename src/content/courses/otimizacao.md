@@ -1,5 +1,5 @@
 ---
-title: "Otimização"
+title: "Introdução à Otimização"
 summary: >
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curso sobre
   métodos de otimização, com notas de aula e listas publicadas no

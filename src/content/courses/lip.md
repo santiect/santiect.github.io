@@ -4,7 +4,7 @@ summary: >
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curso de
   linguagem de programação em C++, com material, slides e exercícios
   publicados na página da disciplina.
-url: "https://santiect.github.io/ect3101cpp/"
+url: "https://santiect.github.io/ect3201cpp/"
 order: 1
 ---
 

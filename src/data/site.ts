@@ -3,20 +3,19 @@
  * nome, foto, e-mail e links de contato em todas as páginas de uma vez.
  */
 export const site = {
-  name: "Prof. Lorem Ipsum",
-  role: "Professor — Escola de Ciências e Tecnologia (ECT), UFRN",
+  name: "Prof. Dr. Éverton Santi",
+  role: "Escola de Ciências e Tecnologia (ECT), UFRN",
   tagline:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit — ensino, pesquisa e extensão em computação.",
-  about: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Doutor em Lorem Ipsum
-pela Universidade Exemplo, com atuação em Linguagens de Programação e
-Otimização. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-laboris nisi ut aliquip ex ea commodo consequat.`,
-  photo: "/assets/img/profile-placeholder.svg",
-  email: "professor@example.com",
+    "Câmara de Computação",
+  about: `Doutor em Engenharia de Computação (UFRN/2014) e Mestre em Engenharia de Produção (UFRN/2012).
+  Graduado em Ciência da Compuação pela Universidade de Cruz Alta (2010). Atua na área de Pesquisa Operacional, em 
+  especial em Otimização Combinatória e Metaheurísticas. Atualmente pesquisa algoritmos de Geração de Colunas para
+  problemas de roteamento.`,
+  photo: "/assets/img/foto_perfil.png",
+  email: "everton.santi@ufrn.br",
   github: "https://github.com/santiect",
-  lattes: "https://lattes.cnpq.br/",
-  linkedin: "https://www.linkedin.com/",
+  lattes: "http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4472058T4",
+  linkedin: "https://www.linkedin.com/in/%C3%A9verton-santi-17a191153/",
   institution: {
     name: "ECT/UFRN",
     url: "https://ect.ufrn.br/",
